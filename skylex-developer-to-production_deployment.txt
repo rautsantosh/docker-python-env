@@ -1,0 +1,58 @@
+https://sky3team.com:15990/get_revenue_summary?start_date=2023-03-01&end_date=2023-03-30&api_key=8a4405e8334dbc2fadcdcae7016089b5
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+#ignore_for = isp, sponsor, sponsor_account, offer_campaign_id, offer_seid, server_name, global
+
+ignore_for ignore_for_value ignore_tpd_in_full_header ignore_tpd_from_domains ignore_tpd_return_path_domains ignore_tpd_reply_to_domains ignore_tpd_in_body domain
+
+
+
+
+--------------------------------------------------------------- DEPOYMENT -------------------------------------------------------------------------
+
+[deploy@Asset-Master ~]$ cat /etc/mtab |grep prod-env
+/dev/mapper/centos_80--512--2--app01-root /home/deploy/prod-env/app/uploads/seed_files xfs rw,seclabel,relatime,attr2,inode64,logbsize=256k,sunit=512,swidth=512,noquota 0 0
+/dev/mapper/centos_80--512--2--app01-root /home/deploy/prod-env/app/uploads/offer_images xfs rw,seclabel,relatime,attr2,inode64,logbsize=256k,sunit=512,swidth=512,noquota 0 0
+[deploy@Asset-Master ~]$
+[deploy@Asset-Master ~]$
+[deploy@Asset-Master ~]$ sudo umount /home/deploy/prod-env/app/uploads/seed_files
+[deploy@Asset-Master ~]$ sudo umount /home/deploy/prod-env/app/uploads/offer_images
+[deploy@Asset-Master ~]$ cat /etc/mtab |grep prod-env
+
+#Take the backup of prod-env
+
+[deploy@Asset-Master ~]$ cp av prod_env bak_prod_env
+
+#Goto prod-env folder and delete everything
+
+#take then git clone of sky3team-portal
+
+#Creating seed_files folder as it is not exist
+
+[deploy@Asset-Master ~]$ mkdir prod-env/app/uploads/seed_files
+[deploy@Asset-Master ~]$ sudo mount -o bind /cont-shared/seed-and-img-dwn/seed_files prod-env/app/uploads/seed_files
+[deploy@Asset-Master ~]$
+[deploy@Asset-Master ~]$ sudo mount -o bind /cont-shared/seed-and-img-dwn/offer_images prod-env/app/uploads/offer_images
+
+#Change prod-env port in below global_var.py file
+[deploy@Asset-Master prod-env]$ vim app/dependencies/global_var.py
+[deploy@Asset-Master prod-env]$
+#Make prod-env related changes in oauth_details.py file
+[deploy@Asset-Master prod-env]$ vim app/dependencies/oauth_details.py
+[deploy@Asset-Master prod-env]$
+#change dev-env to prod-env
+[deploy@Asset-Master prod-env]$ vim log.ini
+[deploy@Asset-Master prod-env]$
+
+------------------------------------------------------------------------------------------------0---------------------------------------------------------------------------
+
+check creative for job id heemanshu= 23288
+
+
+Hi Team,
+Portal will be down for next 20min, deploying new access policy changes.
+
+
+
+

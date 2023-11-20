@@ -1,0 +1,36 @@
+pip install pipenv
+#Go to project directory
+
+pipenv --python 3.8
+#This command will create a Pipfile and a virtual environment for your project. #C:\Users\santoshr\.virtualenvs\WHYBROKER_PROJECT-GsgFXQf4
+
+pipenv install requests
+
+pipenv lock
+#The Pipfile.lock file records the specific versions of all dependencies, including their sub-dependencies. It ensures that anyone working on the project gets the exact same package versions when they set up their environment.
+
+pipenv shell
+#You can activate the virtual environment created by pipenv using the pipenv shell command
+
+################################  CREATE .env file  #######################################
+
+1. create .env in root directory of project
+2. In settings.py add below lines:
+    from dotenv import load_dotenv
+    import os
+
+    load_dotenv()
+
+3. Access environment variable:
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
+
+sellmyjosephson.com
+josephsonwork.com
+
+27.255.75.3  
+27.255.75.5  
+178.215.227.5
+192.168.1.0  
+
+http://pennantbook.com/2liv062Ey

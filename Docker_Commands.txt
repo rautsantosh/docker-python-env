@@ -1,0 +1,105 @@
+install docker 
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo systemctl start docker
+
+
+docker run -d --name outface-redis -h redis-user -p 10.160.0.5:7000:6379 -v /data/redis:/data -e REDIS_PASSWORD=3ghWQfi5w1P4ydzi9ZMhVFN redis:6.2 redis-server --requirepass "3ghWQfi5w1P4ydzi9ZMhVFN"
+
+########################## DOWNLOAD IMAGE ################################
+#10.168.0.2 public ip of asset
+docker run -d --name download_image -v /home/deploy/for_mailer/mailing_app/uploads/offer_images:/code/my_app/offer_images -p 10.168.0.2:9091:80 fastapi
+
+https://db-query.sky3team.com/download_image/ahY720Juw1dOgaOs982bBs/?sponsor_name_with_account=IMS_Spheredigitalnetworks_1&offer_id=1002&image_name=131_98.png
+
+https://db-query.sky3team.com/list_images/ahY720Juw1dOgaOs982bBs/?sponsor_name_with_account=IMS_Spheredigitalnetworks_1&offer_id=1002&image_names=[%22118.png%22,%22131_98.png%22]
+
+###########################
+
+
+Create file named it as "Dockerfile"
+
+Docker deamon not running solution windows
+#"C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
+
+Build docker image using dockerfile on Dockerfile location
+#docker build -t mse_fastapi . #. stands for Dockerfile location
+docker build -t mse_fastapi . -f fastapi.Dockerfile
+
+#docker build -t <containername> . -f <mycustomdockerfile>.Dockerfile #Multiple dockerfiles
+
+docker build -t mse_redis . -f redis.Dockerfile
+
+Run created image [mse_fastapi]
+#docker run -d --name fastapi_container -p 80:8080 mse_fastapi # Expose 8080 in Dockerfile
+
+Copy host machine files to containers /app directory
+#COPY ./app /app
+
+List of images
+#docker images
+
+
+List of all containers
+#docker ps -a
+
+List of active containers
+#docker ps
+
+Remove docker image
+#docker rmi [image_name]
+
+Reomve container
+#docker rm [container_id]
+
+Check log for container
+#docker logs [containerId]
+
+
+#set default python version
+alias python="/usr/local/bin/python3.9"
+
+docker build -t fastapi .
+
+# To mount folder and run docker image
+docker run -d --name download_image -v /home/deploy/for_mailer/mailing_app/uploads/offer_images:/code/my_app/offer_images -p 9090:80 fastapi
+
+Connect to container 
+#docker container exec -it download_image /bin/bash
+
+
+Stop docker container  --
+#docker container ls -a
+#docker container rm container_id
+
+pipenv install python-multipart
+
+docker container run -it fastapi /bin/bash
+
+uvicorn --reload app.main:app --host "0.0.0.0" --port 8082
+
+res = requests.get(f'https://db-query.sky3team.com/check_imgs?sponsor_name_w_acc=blabal&offer_id=97912&image_list=[]')
+
+docker run -d --name download_image -v /home/deploy/for_mailer/mailing_app/uploads/offer_images:/code/my_app/offer_images -p 9090:80 fastapi
+
+docker build -t fastapi .
+
+docker run -d --name download_image -p 9090:80 fastapi
+
+ssh -p 1511 deploy@213.181.107.178 -i .ssh/id_rsa -i .ssh/sr-cert.pub
+
+/home/deploy/for_mailer/mailing_app/uploads/offer_images
+
+http://213.181.107.178:9090/list_images/ahY720Juw1dOgaOs982bBs/?sponsor_name_with_account=cx3_acc1&offer_id=124&image_names=["test.png"]
+
+http://213.181.107.178:9090/download_image/ahY720Juw1dOgaOs982bBs/?sponsor_name_with_account=cx3_acc1&offer_id=124&image_name="118.png"
+
+
+ptables -A INPUT -s 115.113.213.2/32 -p tcp -m tcp --dport 5000 -j ACCEPT
+
+-Created fastapi ReadMail app for outlook
+http://115.113.213.9:5000/read_mail
+
